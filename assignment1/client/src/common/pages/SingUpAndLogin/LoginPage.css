@@ -1,0 +1,16 @@
+.formWrapper {
+    height: 500px;
+}
+
+.buttonSignUpIn {
+    margin: auto;
+    padding: 7px 10px;
+    border: 1px solid #efffff;
+    border-radius: 3px;
+    background: #3085d6;
+    width: 100px; 
+    font-size: 15px;
+    color: white;
+    display: block;
+
+}

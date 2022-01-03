@@ -1,0 +1,10 @@
+*package-lock.json
+*node_modules
+/client
+/server
+/assignment1/server/**.js
+/assignment1/server/*/*.js
+/assignment1/server/config/*.json
+/assignment1/server/config/config.ts
+/assignment1/client/**.js
+/assignment1/client/src/config/config.ts

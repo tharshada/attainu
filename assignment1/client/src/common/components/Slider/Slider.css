@@ -1,0 +1,40 @@
+.slider-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.image-container {
+    margin: 10px;
+    vertical-align: middle;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    /* width: 50%; */
+  }
+
+  .prev, .next {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    cursor: pointer;
+    color: black;
+    transition: 0.6s ease;
+    text-decoration: none;
+    pointer-events: auto;
+  }
+  
+  .disabled {
+    pointer-events: none;
+  }
+  
+  .next {
+    margin-left: 5px;
+  }
+  
+  .prev {
+    margin-right: 5px;
+  }
+  
+  .prev:hover, .next:hover {
+    color: white;
+    background-color: rgba(0,0,0,0.8);
+  }

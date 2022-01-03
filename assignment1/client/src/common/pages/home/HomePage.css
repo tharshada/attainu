@@ -1,0 +1,23 @@
+
+.sticky {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  color: white;
+  background: #101012;
+  padding: 40px 20px 10px 20px;
+}
+
+.header {
+  padding: 10px;
+}
+
+.cards-wrapper {
+  margin-top: 40px;
+}
+
+.signoutbutton {
+  position: relative;
+  left: 40%;
+  margin: 15px;
+}

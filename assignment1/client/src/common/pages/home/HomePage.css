@@ -21,3 +21,8 @@
   left: 40%;
   margin: 15px;
 }
+
+.cards-row {
+  display: flex;
+  justify-content: space-between;
+}

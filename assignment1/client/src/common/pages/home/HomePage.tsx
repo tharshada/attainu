@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Card } from "../../components/Restaurant/CardLayout/Card";
-import { IOption, IRestaurant } from "../../interfaces";
+import { IOption, IRestaurant, IVector } from "../../interfaces";
 import "./HomePage.css";
 import {
   IHomePageProps,
@@ -114,7 +114,7 @@ export const HomePage: React.FunctionComponent<IHomePageProps> = (props) => {
     console.log(data);
     Search(
       userContext.userState.firebase_token,
-      { ...getSearchPayload({...state, sort: data}) },
+      { ...getSearchPayload({ ...state, sort: data }) },
       (error: string | null, result: IRestaurant[] | null) => {
         if (error) {
           setState((prevState) => {
@@ -139,6 +139,15 @@ export const HomePage: React.FunctionComponent<IHomePageProps> = (props) => {
 
   logging.info("Rendering HomePage");
   console.log(state);
+
+  let results: IVector<IRestaurant>[] = [];
+  for (let i = 0; i < state.restaurants.length; i += 2) {
+    const items: IRestaurant[] =
+      i + 1 < state.restaurants.length
+        ? [{ ...state.restaurants[i] }, { ...state.restaurants[i + 1] }]
+        : [{ ...state.restaurants[i] }];
+    results.push({ items: [...items] });
+  }
   return (
     <>
       <div className={"sticky"}>
@@ -158,13 +167,20 @@ export const HomePage: React.FunctionComponent<IHomePageProps> = (props) => {
           initialState={state.sort > 0 ? "ASC" : "DSC"}
         />{" "}
         <br />
-        <button className={"signoutbutton"} onClick={SignOut}>{"Sign Out!"}</button>
+        <button className={"signoutbutton"} onClick={SignOut}>
+          {"Sign Out!"}
+        </button>
         <div className={"header"}>Found the following restaurants: </div>
       </div>
       <div className={"cards-wrapper"}>
-        {state.restaurants.map((props, index) => (
+        {/* {state.restaurants.map((props, index) => (
           <Card key={index.toString()} {...props} />
-        ))}
+        ))} */}
+        {results.map((result, index) => {
+          return <div key={index.toString()} className={"cards-row"}>{result.items.map((props, index) => (
+            <Card key={index.toString()} {...props} />
+          ))}</div>;
+        })}
       </div>
     </>
   );

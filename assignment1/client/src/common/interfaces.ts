@@ -49,6 +49,9 @@ export interface IRoute {
     navHeader?: boolean;
 }
 
+export interface IVector<T> {
+    items: T[]
+};
 export interface IUser {
     uid: string;
     name: string;
